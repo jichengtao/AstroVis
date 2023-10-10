@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>AstroVis</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      #panel {
+        position: absolute;
+        top: 0px;
+        left: 66%;
+        z-index: 30;
+        width: 200px;
+        padding: 5px;
+        background-color: #fff;
+        color: #000;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      #gui-container {
+        position: absolute;
+        top: 1px;
+        right: -1px;
+        width: 600px;
+        white-space: normal;
+        overflow: visible;
+        z-index: 30;
+      }
+
+      #hrDiagram {
+        width: 35%;
+        height: 50%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        padding: 0px;
+        margin-right: 40px;
+        border: 3px solid hsl(236, 91%, 48%);
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      #digUniv {
+        width: 65%;
+        height: 60%;
+        top: 0;
+        right: 0;
+        position: fixed;
+        padding: 0px;
+        margin: auto;
+        border: 3px solid #eae70b;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      #dimRed {
+        width: 35%;
+        height: 50%;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        padding: 0px;
+        margin: auto;
+        border: 3px solid #eae70b;
+        box-sizing: border-box;
+        overflow: visible;
+      }
+
+      #multiVar {
+        width: 65%;
+        height: 40%;
+        bottom: 0;
+        right: 0;
+        position: fixed;
+        padding: 0px;
+        margin: auto;
+        border: 3px solid hsl(0, 91%, 48%);
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="d3.parcoords.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.153.0/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+    <!-- <script src="lib/d3.js"></script>-->
+    <!-- <script src="d3.parcoords.js"></script>-->
+  </head>
+
+  <body>
+    <!-- <div class="info">
+        <a href="https://github.com/lucasmajerowicz/threejs-mvc-example">MVC THREEJS Example</a><br/>
+        Click on a planet to stop it - Double click on a planet to remove it.
+    </div> 
+    <iframe src="second.html" class="iframe1-style" scrolling="no"></iframe>
+    <iframe src="third.html" class="iframe2-style" scrolling="no"></iframe>
+    <iframe src="brushing.html" class="iframe3-style" scrolling="no"></iframe>
+    <iframe src="DR.html" class="iframe4-style" scrolling="no"></iframe>-->
+
+    <!----------------------------------------------------------------------------------------------->
+    <!--Digital Universe-->
+    <div id="digUniv"></div>
+    <!----------------------------------------------------------------------------------------------->
+
+    <!----------------------------------------------------------------------------------------------->
+    <!--HR Diagram-->
+    <div id="hrDiagram"></div>
+    <!----------------------------------------------------------------------------------------------->
+
+    <!----------------------------------------------------------------------------------------------->
+    <!--Dimension Reduction-->
+    <div id="dimRed">
+      <div id="attriRegion" style="font-size: 8px;">
+        <form id="attributeForm">
+          <div id="attributeCheckboxes"></div>
+          <br />
+          <input id="dimRedSubmit" type="submit" value="submit" />
+        </form>
+        <!--<p id="selectedAttributes"></p>-->
+        <p id="selectedAttributes"></p>
+      </div>
+      <div id="scatterplot" ></div>
+    </div>
+    <!----------------------------------------------------------------------------------------------->
+
+    <!----------------------------------------------------------------------------------------------->
+    <!--Dimension Reduction-->
+    <div id="multiVar">
+      <div id="parView" class="parcoords" style="width: 100%; height: 85%"></div>
+      <p>
+        <label for="sltBrushMode">Brush mode:</label>
+        <select id="sltBrushMode"></select>
+        <label id="lblPredicate" for="sltPredicate">Predicate:</label>
+        <select id="sltPredicate">
+          <option>AND</option>
+          <option>OR</option>
+        </select>
+        <button id="btnReset">Reset Brushes</button>
+      </p>
+    </div>
+    <!----------------------------------------------------------------------------------------------->
+  </body>
+</html>
